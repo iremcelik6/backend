@@ -1,0 +1,23 @@
+version: "1"
+
+databases:
+- name: iremcelik
+  databaseName: iremcelik
+  user: iremcelik_user
+  plan: free
+  region: frankfurt
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "14"
+
+services:
+- type: web
+  name: backend
+  runtime: docker
+  repo: https://github.com/iremcelik6/backend
+  plan: free
+  region: frankfurt
+  dockerContext: .
+  dockerfilePath: ./Dockerfile
+  autoDeployTrigger: commit
