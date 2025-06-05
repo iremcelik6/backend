@@ -1,0 +1,14 @@
+# Java 17 kullanıyoruz (Spring Boot için uyumlu)
+FROM eclipse-temurin:17-jdk-alpine
+
+# Çalışma dizini oluştur
+WORKDIR /app
+
+# JAR dosyasını kopyala (eğer isim farklıysa düzelt)
+COPY target/moviehub-backend-1.0.0.jar app.jar
+
+# 8080 portunu expose et (Render bunu otomatik algılar)
+EXPOSE 8080
+
+# Uygulamayı başlat
+ENTRYPOINT ["java", "-jar", "app.jar"]

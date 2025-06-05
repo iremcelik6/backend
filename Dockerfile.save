@@ -1,0 +1,8 @@
+FROM openjdk:17
+ARG JAR_FILE=target/moviehub-backend-1.0.0.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+git add Dockerfile
+git commit -m "Add proper Dockerfile for Render deployment"
+git push origin main.java
+
