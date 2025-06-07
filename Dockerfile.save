@@ -1,5 +1,14 @@
-FROM openjdk:17
+# Temel imaj olarak OpenJDK 17 kullanıyoruz
+FROM openjdk:17-jdk-slim
+
+# Build aşamasında derlenen jar dosyasının yolu (arg ile parametre alıyoruz)
 ARG JAR_FILE=target/moviehub-backend-1.0.0.jar
+
+# Jar dosyasını konteynıra kopyala ve app.jar olarak isimlendir
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+# Uygulamanın çalışacağı portu aç
 EXPOSE 8080
+
+# Uygulamayı çalıştırmak için komut
+ENTRYPOINT ["java", "-jar", "/app.jar"]
